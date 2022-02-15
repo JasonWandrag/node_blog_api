@@ -6,13 +6,13 @@ const app = express.Router();
 
 app.get("/", (req, res) =>
   res.send({
-    msg: "To send an email, send a POST request with a JSON object structured as follows:",
-    email: {
+    msg: "Please use a POST request to send an email",
+    email_template: {
       name: "John Doe",
       email: "johndoe@gmail.com",
       contact: "0123456789",
       message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni assumenda eveniet fuga at possimus esse earum eos sit consequatur saepe, officiis vitae nisi neque vero natus adipisci dicta iure suscipit!",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos blanditiis culpa quae modi accusamus quis nesciunt ea facere suscipit aut, aliquid, aliquam voluptatum. Optio ratione excepturi libero, quia itaque quis.",
     },
   })
 );
@@ -34,9 +34,9 @@ app.post("/", (req, res) => {
   const mailOptions = {
     from: email,
     to: process.env.USER,
-    subject: "New Contact from your portfolio",
+    subject: "New message from Generic Blog API",
     html: `
-<h1>${name} is interested in your services.</h1>
+<h1>${name} is interested in your stories.</h1>
 <p>Contact them on:</p>
 <ul>
     <li><a href='tel:${contact}'>${contact}</a></li>
