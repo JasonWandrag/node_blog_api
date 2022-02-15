@@ -8,10 +8,10 @@ const contactRouter = require("./routes/contactRouter");
 
 const app = express();
 app.set("port", process.env.PORT || 6969);
-
 app.use(express.json());
 app.use(cors());
 
+// This is the entry point to the API. I wanted to display a page with all the API route options available
 app.get("/", (req, res) => {
   const _rootUrl = "http://" + req.get("host") + req.url;
   res.send(`
@@ -25,7 +25,6 @@ app.get("/", (req, res) => {
     </ul>
   `);
 });
-
 app.use("/contact", contactRouter);
 app.use("/users", userRouter);
 app.use("/blogs", blogRouter);
